@@ -37,4 +37,4 @@ def valid(entry: PasswordEntry) -> bool:
 
 
 with open("input", "r") as f:
-    print(sum(1 for line in f if valid(entry(line))))
+    print(sum(map(lambda _: 1, filter(valid, map(entry, f)))))
