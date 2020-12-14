@@ -29,3 +29,12 @@ with open("input", "r") as f:
     boarding_passes = [parse(line.strip()) for line in f]
 
 print(max([bp.seat_id for bp in boarding_passes]))
+
+boarding_passes.sort(key=lambda bp: bp.seat_id)
+last = boarding_passes.pop().seat_id
+while boarding_passes:
+    curr = boarding_passes.pop().seat_id
+    if curr < last - 1:
+        print(curr + 1)
+        break
+    last = curr
